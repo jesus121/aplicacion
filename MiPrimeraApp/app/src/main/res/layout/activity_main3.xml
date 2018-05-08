@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/user"
+        style="@style/Labels"
+        android:text="Username"
+        android:lines="1"
+        android:maxLength="15"/>
+
+
+    <EditText
+        android:id="@+id/user2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:inputType="text"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/email"
+        style="@style/Labels"
+        android:text="Email" />
+    />
+
+    <EditText
+        android:id="@+id/email2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/passoword"
+        style="@style/Labels"
+        android:text="Passoword" />
+
+    <EditText
+        android:id="@+id/passoword2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Passoword"
+        android:inputType="textPassword"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textColor="@color/colordark"
+            android:textSize="15sp"
+            />
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end">
+        <RadioButton
+            android:id="@+id/buttonMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M"
+            />
+        <RadioButton
+            android:id="@+id/buttonFame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="F"
+            />
+            </RadioGroup>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="age"
+            android:gravity="start"
+            android:textColor="@color/colordark"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/age"
+            android:hint="years"
+            android:inputType="numberDecimal"
+            android:maxLength="3"
+            android:lines="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|center"
+            android:onClick="guardarDatos"
+            android:text="Save" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete" />
+    </LinearLayout>
+
+</LinearLayout>

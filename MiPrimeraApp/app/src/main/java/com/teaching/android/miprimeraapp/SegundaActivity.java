@@ -18,12 +18,16 @@ public class SegundaActivity extends AppCompatActivity {
         Log.d("Segundo Activity","el extra de Paco");
     }
     public void onClick2(View view) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
-        startActivity(intent);
+        Intent intent2 = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+        startActivity(intent2);
     }
 
     public void onClick3(View view) {
-        Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:1234") ) ;
-        startActivity(intent);
+        Intent intent3 = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:1234") ) ;
+        startActivity(intent3);
+    }
+    public void onClick4(View view){
+        Intent intent4=new Intent(this , Main3Activity.class );
+        startActivity(intent4);
     }
 }
