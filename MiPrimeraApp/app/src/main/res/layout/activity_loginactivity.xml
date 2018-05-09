@@ -5,16 +5,62 @@
     android:layout_height="match_parent"
     tools:context=".Loginactivity">
     <TextView
-        android:id="@+id/user"
+        android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Username"
-        android:textColor="@color/colordark"/>
+        android:textColor="@color/colordark"
+        />
     <EditText
+
+        android:id="@+id/username2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Username"
+        android:padding="4sp"
+        android:layout_below="@id/username"
+        android:lines="1"
+        android:maxLength="15"
         />
-
+    <TextView
+        android:id="@+id/passoword3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textColor="@color/colordark"
+        android:layout_below="@+id/username2"
+        />
+    <EditText
+        android:id="@+id/passoword4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4sp"
+        android:hint="Password"
+        android:layout_below="@id/passoword3"
+        android:lines="1"
+        android:maxLength="15"/>
+    <Button
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_below="@id/passoword4"
+        android:onClick="doLogin"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:layout_toEndOf="@id/login"
+        android:layout_alignBottom="@id/login"
+        android:onClick="onCancel"
+        />
+    <Button
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:layout_alignParentBottom="true"
+        android:onClick="doRegister"/>
 
 
 </RelativeLayout>
