@@ -9,12 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".SegundaActivity" />
-        <activity android:name=".Main3Activity" />
-        <activity android:name=".Loginactivity" />
+        <activity
+            android:name=".Main3Activity"
+            android:parentActivityName=".Loginactivity" />
+        <activity
+            android:name=".Loginactivity"
+            android:parentActivityName=".Listmain" />
         <activity android:name=".GalleryActivity" />
         <activity android:name=".Listmain">
             <intent-filter>
@@ -23,6 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activityfra" />
+        <activity android:name=".gameDetailActivity"></activity>
     </application>
 
 </manifest>

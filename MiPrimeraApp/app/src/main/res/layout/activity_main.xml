@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,8 +9,7 @@
     android:gravity="center|bottom"
     android:orientation="vertical"
     android:layout_margin="30dp"
-    tools:context="com.teaching.android.miprimeraapp.MainActivity">
-
+    >
 
     <Button
         android:id="@+id/segunda_activity"
@@ -25,4 +25,6 @@
         android:onClick="onClick"
 
         android:text="Abrir GOOGLE" />
+
+
 </LinearLayout>

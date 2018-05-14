@@ -3,4 +3,17 @@
     <string name="username">Username</string>
     <string name="email">Email</string>
     <string name="passoword">Passorwd</string>
+    <string name="mensajeDialogo">Estas seguro que quiere borar este usuario ?</string>
+    <string name="aceptar">Si</string>
+    <string name="cancelar">No</string>
+    <string name="neutral">Cancelar</string>
+    <string name="Confirmar">Confirmar</string>
+    <string name="Fragment">Fragment B</string>
+    <string name="InfoSmite">El juego se basa en dos equipos, cada uno formado por cinco dioses,
+        enfrentados en un campo de batalla con la finalidad de destruir el titán enemigo situado en cada una de las bases.
+    </string>
+    <string name="paginaOfficial">web Official</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

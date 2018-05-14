@@ -2,10 +2,15 @@ package com.teaching.android.miprimeraapp;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.menu.MenuAdapter;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 public class Listmain extends AppCompatActivity {
 
@@ -24,9 +30,11 @@ public class Listmain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listmain);
-
         ListView listView = findViewById(R.id.lista);
         listView.setAdapter(new MyAdapter());
+
+        Toolbar myToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
 
        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
@@ -35,8 +43,24 @@ public class Listmain extends AppCompatActivity {
                        Toast.LENGTH_LONG).show();
            }
        });
+
         }
-        private class MyAdapter extends BaseAdapter {
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.list_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent registerIntent = new Intent(this,Loginactivity.class);
+        startActivity(registerIntent);
+        return true;
+    }
+
+    private class MyAdapter extends BaseAdapter {
 
             @Override
             public int getCount() {

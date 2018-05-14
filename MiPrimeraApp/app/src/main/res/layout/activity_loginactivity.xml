@@ -3,13 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Loginactivity">
+
     <TextView
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Username"
         android:textColor="@color/colordark"
+        android:layout_below="@+id/toolbar2"
         />
     <EditText
 
@@ -61,6 +64,15 @@
         android:text="Register"
         android:layout_alignParentBottom="true"
         android:onClick="doRegister"/>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorMorado"
+        app:title="Login"
+        app:titleTextColor="@color/colorBlanco"
+  />
 
 
 </RelativeLayout>
