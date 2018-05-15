@@ -26,7 +26,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activityfra" />
-        <activity android:name=".gameDetailActivity"></activity>
+        <activity android:name=".gameDetailActivity"
+            android:parentActivityName=".Listmain">
+
+        </activity>
     </application>
 
 </manifest>

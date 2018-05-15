@@ -16,9 +16,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.teaching.android.miprimeraapp.model.Interactors.GameInteractor;
 
 
 public class Listmain extends AppCompatActivity {
@@ -41,6 +44,12 @@ public class Listmain extends AppCompatActivity {
            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                Toast.makeText(Listmain.this, "Seleccionada posición " + position,
                        Toast.LENGTH_LONG).show();
+               //Abrir activity de detalle
+               Intent intent = new Intent(Listmain.this , gameDetailActivity.class);
+               int gameId = new GameInteractor().getGames().get(position).getId();
+               intent.putExtra("position",position);
+               startActivity(intent);
+
            }
        });
 
