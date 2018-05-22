@@ -15,6 +15,11 @@
         app:title="Register"
         app:titleTextColor="@color/colorBlanco"
         />
+    <ImageView
+        android:id="@+id/imagenPerfil"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        />
 
     <TextView
         android:id="@+id/user"

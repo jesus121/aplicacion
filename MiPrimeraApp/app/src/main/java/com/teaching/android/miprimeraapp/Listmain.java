@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.menu.MenuAdapter;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,6 +24,8 @@ import android.widget.Toast;
 
 import com.teaching.android.miprimeraapp.model.Interactors.GameInteractor;
 
+import java.io.File;
+
 
 public class Listmain extends AppCompatActivity {
 
@@ -35,6 +38,11 @@ public class Listmain extends AppCompatActivity {
         setContentView(R.layout.activity_listmain);
         ListView listView = findViewById(R.id.lista);
         listView.setAdapter(new MyAdapter());
+
+        File directorioInterno =getFilesDir() ;
+        File directorioExterno = getCacheDir();
+        Log.d("Listmain","interno" + directorioInterno.getAbsolutePath());
+        Log.d("Listmain","Cache"+directorioExterno.getAbsolutePath());
 
         Toolbar myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
@@ -52,6 +60,7 @@ public class Listmain extends AppCompatActivity {
 
            }
        });
+       getExternalFilesDir(null);
 
         }
 

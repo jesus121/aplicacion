@@ -1,6 +1,8 @@
 package com.teaching.android.miprimeraapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,10 +24,20 @@ public class Loginactivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
         username2EditText = findViewById(R.id.username2);
-        passwordEditText = findViewById(R.id.passoword2);
+        passwordEditText = findViewById(R.id.passoword4);
 
         ActionBar actionBar =getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        SharedPreferences mySharedPreferences = getSharedPreferences(getString(R.string.user_prefences),Context.MODE_PRIVATE);
+        String savedUsername = mySharedPreferences.getString("username_key","");
+        username2EditText.setText(savedUsername);
     }
 
 
@@ -35,7 +47,7 @@ public class Loginactivity extends AppCompatActivity {
     }
 
     public void doRegister(View view) {
-        Intent registerIntent = new Intent(this,Main3Activity.class);
+        Intent registerIntent = new Intent(this,main3activity.class);
         startActivity(registerIntent);
     }
 
@@ -44,14 +56,19 @@ public class Loginactivity extends AppCompatActivity {
         String username = username2EditText.getText().toString();
         String password = passwordEditText.getText().toString();
         if(TextUtils.isEmpty(username)){
-            //corregir
             username2EditText.setError("el campo está vacío");
         }else if (TextUtils.isEmpty(password)){
             passwordEditText.setError("está vacío");
             passwordEditText.setError("este campo está vacío");
         }else {
-            Intent profileIntent = new Intent(this ,Main3Activity.class);
+            SharedPreferences mySharedPreference = getSharedPreferences(getString(R.string.user_prefences),Context.MODE_PRIVATE);
+            SharedPreferences.Editor myEditor = mySharedPreference.edit() ;
+            myEditor.putString("username_key",username);
+            myEditor.apply();
+
+            Intent profileIntent = new Intent(this ,main3activity.class);
                 startActivity(profileIntent);
         }
     }
+
 }

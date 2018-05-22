@@ -27,7 +27,7 @@ public class SegundaActivity extends AppCompatActivity {
         startActivity(intent3);
     }
     public void onClick4(View view){
-        Intent intent4=new Intent(this , Main3Activity.class );
+        Intent intent4=new Intent(this , main3activity.class );
         startActivity(intent4);
     }
 }

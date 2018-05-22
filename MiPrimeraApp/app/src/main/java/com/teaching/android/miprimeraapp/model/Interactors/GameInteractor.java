@@ -10,7 +10,7 @@ public class GameInteractor {
     private static ArrayList<GameModel>games;
 
     /**
-     * Constrctor
+     * Constructor
      */
 
     public GameInteractor (){

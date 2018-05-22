@@ -9,7 +9,7 @@
 
     <item android:id="@+id/deleter"
         android:title="deleter"
-        android:icon="@drawable/lolicon"
+        android:icon="@mipmap/icon_deleter"
         app:showAsAction="ifRoom"
         ></item>
 </menu>

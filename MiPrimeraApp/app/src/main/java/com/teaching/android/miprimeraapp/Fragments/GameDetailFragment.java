@@ -10,11 +10,13 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.teaching.android.miprimeraapp.R;
+import com.teaching.android.miprimeraapp.Webview.webViewActivity;
 import com.teaching.android.miprimeraapp.model.GameModel;
 import com.teaching.android.miprimeraapp.model.Interactors.GameInteractor;
 
@@ -62,8 +64,15 @@ public class GameDetailFragment extends Fragment {
         boton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(game.getOfficialWebsiteURL()));
+
+                Intent webIntent = new Intent(getContext(),webViewActivity.class);
+                webIntent.putExtra("url",game.getOfficialWebsiteURL());
                 startActivity(webIntent);
+               // Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(game.getOfficialWebsiteURL()));
+                //startActivity(webIntent) ;
+
+
+
             }
         });
 

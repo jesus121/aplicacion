@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Mi Aplicación</string>
     <string name="username">Username</string>
-    <string name="email">Email</string>
+    <string name="Email">Email</string>
     <string name="passoword">Passorwd</string>
     <string name="mensajeDialogo">Estas seguro que quiere borar este usuario ?</string>
     <string name="aceptar">Si</string>
@@ -16,4 +16,12 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="user_prefences">com.teaching.miprieraapp.username</string>
+    <string name="pasword_main3">com.teaching.miprimeraapp.paswords</string>
+    <string name="email_main3">com.teaching.miprimeraap.email</string>
+    <string name="user_main3">com.teaching.miprimeraap.main.username</string>
+    <string name="nombre">nombre</string>
+    <string name="contrasena">contrasña</string>
+    <string name="email">Email</string>
 </resources>
