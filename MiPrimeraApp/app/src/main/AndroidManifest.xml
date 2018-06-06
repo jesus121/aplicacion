@@ -3,6 +3,10 @@
     package="com.teaching.android.miprimeraapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature android:name="android.hardware.location.gps" />
 
     <application
         android:allowBackup="true"
@@ -20,18 +24,65 @@
             android:name=".Loginactivity"
             android:parentActivityName=".Listmain" />
         <activity android:name=".GalleryActivity" />
-        <activity android:name=".Listmain">
+        <activity android:name=".Listmain" />
+        <activity android:name=".Activityfra" />
+        <activity
+            android:name=".gameDetailActivity"
+            android:parentActivityName=".Listmain" />
+        <activity android:name=".Webview.webViewActivity" />
+
+        <service android:name=".FirebaseMessaging.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".FirebaseMessaging.FireBaseMessagingService2">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".RecyclerViewAcMvity" />
+
+        <receiver
+            android:name=".BaseDatos.MyConnectingReceive"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/cama" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.teaching.android.miprimeraapp"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".MediaPlayerActivity">
+
+        </activity>
+
+        <service
+            android:name=".MediaPlayerService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".ReactiveXActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activityfra" />
-        <activity
-            android:name=".gameDetailActivity"
-            android:parentActivityName=".Listmain"></activity>
-        <activity android:name=".Webview.webViewActivity"></activity>
     </application>
 
 </manifest>

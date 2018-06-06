@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+
+    >
+
+    <Button
+        android:id="@+id/Empezar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/Pause_musica"
+        android:layout_toEndOf="@+id/Pause_musica"
+        android:background="@color/colordark"
+        android:onClick="Empezar_musica"
+
+        android:text="star"
+        android:textColor="@color/colorBlanco" />
+
+    <Button
+        android:id="@+id/Pause_musica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colordark"
+        android:onClick="Pausar_musica"
+        android:text="pause"
+        android:textColor="@color/colorBlanco"
+        android:layout_below="@id/Video_obtenido"
+
+
+        />
+    <LinearLayout
+        android:id="@+id/Video_obtenido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <VideoView
+            android:id="@+id/Video_reproducir"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="15dp"
+
+            />
+    </LinearLayout>
+
+
+</RelativeLayout>

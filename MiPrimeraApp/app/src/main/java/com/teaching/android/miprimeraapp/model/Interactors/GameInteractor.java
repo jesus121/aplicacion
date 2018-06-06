@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class GameInteractor {
 
-    private static ArrayList<GameModel>games;
+    private  ArrayList<GameModel>games;
 
     /**
      * Constructor
@@ -17,23 +17,22 @@ public class GameInteractor {
         //Si no tengo juegps , los creo
         if (games == null){
             GameModel smite = new GameModel(0,"smite","descripción smite",
-                    "https://www.smitegame.com",R.drawable.smite_logo,R.drawable.susanoo);
+                    "https://www.smitegame.com","","");
 
             GameModel metin2 = new GameModel(1 , "metin2","descripción metin2",
-                    "https://es.metin2.gameforge.com/",R.drawable.metinicon , R.drawable.fondometin);
-            GameModel lol = new GameModel(2, "league of legends", "descripción lol",
-                    "https://euw.leagueoflegends.com/es/", R.drawable.fondolol , R.drawable.lolicon );
+                    "https://es.metin2.gameforge.com/","" , "");
+
 
             games = new ArrayList<>();
             games.add(smite);
             games.add(metin2);
-            games.add(lol);
+
         }
 
 
     }
 
-    public static ArrayList<GameModel> getGames() {
+    public  ArrayList<GameModel> getGames() {
         return games;
     }
     public GameModel getGameWithId (int id){

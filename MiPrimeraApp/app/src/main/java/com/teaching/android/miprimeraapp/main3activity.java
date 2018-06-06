@@ -4,12 +4,17 @@ import android.app.DatePickerDialog;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteConstraintException;
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -40,13 +45,13 @@ public class main3activity extends AppCompatActivity {
     private EditText ageEditText;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
-        Log.d("Listmain", "Existe y puedo escriber?" + isExternalStorageWritable());
-        Log.d("Listmain", "Existe y puedo escriber?" + isExternalStorageReadable());
+
 
         Toolbar myToolbar = findViewById(R.id.toolbar3);
         setSupportActionBar(myToolbar);
@@ -75,13 +80,7 @@ public class main3activity extends AppCompatActivity {
             }
 
         });
-        File imgFile = new File(getExternalFilesDir(null), "matt-icons_preferences-desktop-personal.png");
-        if (isExternalStorageReadable()) {
-            if (imgFile.exists()) {
-                ImageView myImage = findViewById(R.id.imagenPerfil);
-                myImage.setImageURI(Uri.fromFile(imgFile));
-            }
-        }
+
     }
 
 
@@ -108,31 +107,42 @@ public class main3activity extends AppCompatActivity {
 
 
     public void guardarDatos(View view) {
+
         Log.d("activity_main3", "Username" + usernameEditText.getText());
         Log.d("actitivy_main3", "Email" + emailEditText.getText());
         Log.d("actitivy_main3", "Password" + passwordEditText.getText());
         Log.d("actitivy_main3", "Age" + ageEditText.getText());
 
+
+        AppDatabase base = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "base")
+                .allowMainThreadQueries().build();
+
+
+        try {
+            User user = new User();
+            user.setUsername(usernameEditText.getText().toString());
+            user.setPassword(passwordEditText.getText().toString());
+            user.setEmail(emailEditText.getText().toString());
+            user.setAge(ageEditText.getText().toString());
+            base.userDao().insert(user);
+            Intent intentperfil = new Intent(main3activity.this, Loginactivity.class);
+            startActivity(intentperfil);
+        } catch (SQLiteConstraintException ex) {
+            Toast.makeText(main3activity.this, "Lo siento tu usuario ya existe",
+                    Toast.LENGTH_LONG).show();
+        }
+        Toast.makeText(main3activity.this, "has creado con extito tu perfil",
+                Toast.LENGTH_LONG).show();
+
+
         SharedPreferences mySharedPreference = getSharedPreferences(getString(R.string.user_main3), Context.MODE_PRIVATE);
         SharedPreferences.Editor myEditor = mySharedPreference.edit();
         myEditor.putString("nombre", usernameEditText.getText().toString());
-        myEditor.putString("contrasena", passwordEditText.getText().toString());
-        myEditor.putString("Email", emailEditText.getText().toString());
-        myEditor.putString("años", ageEditText.getText().toString());
+
         myEditor.apply();
-
-        AppDatabase base = Room.databaseBuilder(getApplicationContext(),AppDatabase.class ,"base")
-                .allowMainThreadQueries().build();
-
-        try {
-            User user =new User ();
-            base.userDao().insert(user);
-        }catch (SQLiteConstraintException ex){
-
-        }
-        Toast.makeText(main3activity.this , "Tú usuario está guardado",
-                Toast.LENGTH_LONG).show();
     }
+
+
 
 
     public void onDelete(View view) {
@@ -159,36 +169,40 @@ public class main3activity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
         SharedPreferences mySharedPreferences = getSharedPreferences(getString(R.string.user_main3), Context.MODE_PRIVATE);
-        String Username = mySharedPreferences.getString("nombre", "");
-        String Pasword = mySharedPreferences.getString("contrasena", "");
-        String email = mySharedPreferences.getString("Email", "");
-        String Age = mySharedPreferences.getString("años", "");
-        usernameEditText.setText(Username);
-        passwordEditText.setText(Pasword);
-        emailEditText.setText(email);
-        ageEditText.setText(Age);
+        String usernameValue = mySharedPreferences.getString("username_key", "");
+        AppDatabase myDatabase= Room.databaseBuilder(getApplicationContext(),AppDatabase.class,"base").allowMainThreadQueries().build();
+        User myUser =myDatabase.userDao().findByUsername(usernameValue);
+        if (myUser !=null){
+            usernameEditText.setText(myUser.getUsername());
+            emailEditText.setText(myUser.getEmail());
+            ageEditText.setText(myUser.getAge());
+            passwordEditText.setText(myUser.getPassword());
 
-    }
-
-    // Checks if external storage is available for read and write
-    public boolean isExternalStorageWritable() {
-        String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            return true;
         }
-        return false;
+
+
+    }
+    private File createImageFile (){
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        return new File(storageDir , "main3activity.png");
     }
 
-    // Checks if external storage is available to at least read
-    public boolean isExternalStorageReadable() {
-        String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state) ||
-                Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
-            return true;
+    public void imagenPerfil2 (View view){
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager())!=null){
+            File phothoFile = createImageFile();
+            Uri photoUri = FileProvider.getUriForFile(this , "com.teaching.android.miprimeraapp",phothoFile);
+            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT , photoUri);
+            startActivityForResult(takePictureIntent,100);
+
         }
-        return false;
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        File myFile = createImageFile();
 
-
+    }
 }
